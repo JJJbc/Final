@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.withJo.member">
+
+	<resultMap type="memberVo" id="memberResultMap">
+		<id column="MEMBER_NO" property="memberNo"/>
+		<result column="MEMBER_ID" property="memberId"/>
+		<result column="MEMBER_PW" property="memberPw"/>
+		<result column="MEMBER_NAME" property="memberName"/>
+		<result column="MEMBER_BIRTH_DATE" property="memberBirthDate"/>
+		<result column="MEMBER_GENDER" property="memberGender"/>
+		<result column="MEMBER_ZIP_CODE" property="memberZipCode"/>
+		<result column="MEMBER_ADDRESS" property="memberAddress"/>
+		<result column="MEMBER_ADDRESS_INFO" property="memberAddressInfo"/>		
+		<result column="MEMBER_CREDATE" property="memberCredate"/>
+		<result column="MEMBER_UPDATE" property="memberUpdate"/>
+		<result column="MEMBER_E_MONEY" property="memberEMoney"/>
+		<result column="AUTHORTIY" property="authority"/>		
+	</resultMap>
+	
+	<sql id="search">
+		<choose>
+			<when test="searchField == 'all'">
+				AND (MEMBER_ID LIKE '%' || #{searchKeyword} || '%'
+				OR MEMBER_NAME LIKE '%' || #{searchKeyword} || '%')
+			</when>
+			<when test="searchField == 'memberId'">
+				AND (MEMBER_ID LIKE '%' || #{searchKeyword} || '%')
+			</when>
+			<when test="searchField == 'memberName'">
+				AND (MEMBER_NAME LIKE '%' || #{searchKeyword} || '%')
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</sql>
+	
+	<select id="memberSelectList" parameterType="map" resultMap="memberResultMap">
+	   SELECT * FROM (
+	        SELECT ROWNUM AS RN, TA.*
+	        FROM (
+	            SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_BIRTH_DATE, MEMBER_ZIP_CODE, MEMBER_ADDRESS,
+				MEMBER_ADDRESS_INFO, MEMBER_GENDER, MEMBER_CREDATE, MEMBER_UPDATE, MEMBER_E_MONEY, AUTHORITY
+				FROM MEMBER	            
+	            <where>
+					<include refid="search"/>
+				</where>
+	            ORDER BY MEMBER_NO ASC
+	        ) TA
+	    ) 
+	    WHERE RN BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="memberTotalCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS totalCount
+		FROM MEMBER
+		<where>
+			<include refid="search"/>
+		</where>
+	</select>
+	
+	<select id="memberExist" parameterType="memberVo" resultMap="memberResultMap">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, AUTHORITY
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+		AND MEMBER_PW = #{memberPw}
+	</select>
+	
+	<insert id="memberInsertOne" parameterType="memberVo">
+		INSERT INTO MEMBER(MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_BIRTH_DATE, MEMBER_GENDER, MEMBER_ZIP_CODE,
+							MEMBER_ADDRESS, MEMBER_ADDRESS_INFO)
+		VALUES(MEMBER_NO_SEQ.NEXTVAL, #{memberId}, #{memberPw}, #{memberName}, #{memberBirthDate}, #{memberGender},
+							#{memberZipCode}, #{memberAddress}, #{memberAddressInfo})
+	</insert>
+	
+	<select id="memberSelectOne" parameterType="int" resultMap="memberResultMap">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_BIRTH_DATE, MEMBER_ZIP_CODE, MEMBER_ADDRESS, MEMBER_ADDRESS_INFO, MEMBER_E_MONEY
+		FROM MEMBER
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<update id="memberUpdateOne" parameterType="memberVo">
+		UPDATE MEMBER
+		<set>			
+			<if test="memberZipCode != ''">MEMBER_ZIP_CODE = #{memberZipCode},</if>
+			<if test="memberAddress != ''">MEMBER_ADDRESS = #{memberAddress},</if>
+			MEMBER_ADDRESS_INFO = #{memberAddressInfo},
+			MEMBER_UPDATE = SYSDATE
+		</set>
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
+
+</mapper>
