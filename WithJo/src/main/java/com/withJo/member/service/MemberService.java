@@ -12,5 +12,6 @@ public interface MemberService {
 	public int memberInsertOne(MemberVo memberVo);
 	public MemberVo memberSelectOne(int no);
 	public int memberUpdateOne(MemberVo memberVo);
+	public boolean isDuplicateId(String memberId);
 
 }

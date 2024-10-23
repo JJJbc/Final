@@ -12,4 +12,6 @@ public interface MemberDao {
 	public abstract int memberInsertOne(MemberVo memberVo);
 	public MemberVo memberSelectOne(int no);
 	public int memberUpdateOne(MemberVo memberVo);
+	
+	public int countByMemberId(String memberId);
 }

@@ -50,4 +50,10 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.memberUpdateOne(memberVo);
 	}
 
+	@Override
+	public boolean isDuplicateId(String memberId) {
+		// TODO Auto-generated method stub
+		return memberDao.countByMemberId(memberId) > 0;
+	}
+
 }

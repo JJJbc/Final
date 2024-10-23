@@ -89,6 +89,16 @@
 		</set>
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<select id="countByMemberId" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+	
+	
+	
+	
 
 
 </mapper>

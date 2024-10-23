@@ -16,15 +16,9 @@
 <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 <!-- 페이지 css -->
 <link rel="stylesheet" href="/css/common/common.css">
+<link rel="stylesheet" href="/css/member/memberLogin.css">
+
 <script defer src="/js/common/common.js"></script>
-
-
-
-<style type="text/css">
-#main-container{
-	margin-top: 150px;
-}
-</style>
 </head>
 <body>
 
@@ -39,33 +33,32 @@
 			</div>
 			<div class="main_signIn_content_form">
 				<form id="loginForm" action="./login" method="post" class="main_signIn_content">
-					<div class="main_signIn_content__items">
-						<div class="signIn_content--item">
+					
+						<div class="signIn_content--memberId">
 							<label  for="memerId">아이디</label> 
 							<div class="signIn_content_element--textBox">
 								<input id="memberId" type="text" name="memberId" value="">
 							</div>
 						</div>
-						<div class="signIn_content--item">
+						<div class="signIn_content--memberPw">
 							<label for="memberPw">비밀번호</label> 
 							<div class="signIn_content_element--textBox">
 								<input id="memberPw" type="password" name="memberPw" value="">
 							</div>
 						</div>
-						<div class="signIn_content--item">
+						<div class="signIn_content--loginBtn">
 							<input type="submit" value="로그인" class="signin_btn"/>
 						</div>
-						<div class="signUp_content--item">
+						<div class="signUp_content--signupBtn">
 							<button type="button" class="signUp_btn" onclick="location.href='/member/add'">가입하러가기 -></button>
 						</div>
-					</div>
+					
 				</form>
 			</div>
 		</div>
-	</div> <!-- main-container -->
+	</div> 
 	
 	<jsp:include page="/WEB-INF/views/Footer.jsp"/>
-
   
 </body>
 

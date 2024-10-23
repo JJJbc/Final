@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.withJo.member.domain.MemberVo;
@@ -132,6 +133,16 @@ public class MemberController {
 		memberService.memberInsertOne(memberVo);
 		
 		return "/member/MemberLoginView";
+	}
+	
+	// ID 중복검사
+	@PostMapping("/checkId")
+	@ResponseBody
+	public Map<String, Boolean> checkId(@RequestParam String memberId) {
+	    boolean isDuplicate = memberService.isDuplicateId(memberId); // 서비스에서 중복 검사 로직 수행
+	    Map<String, Boolean> response = new HashMap<>();
+	    response.put("isDuplicate", isDuplicate);
+	    return response;
 	}
 	
 	// 마이페이지 수정

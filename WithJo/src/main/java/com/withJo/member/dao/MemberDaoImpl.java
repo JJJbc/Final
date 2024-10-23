@@ -63,4 +63,10 @@ public class MemberDaoImpl implements MemberDao{
 		return sqlSession.update(namespace + "memberUpdateOne", memberVo);
 	}
 
+	@Override
+	public int countByMemberId(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace + "countByMemberId", memberId);
+	}
+
 }
