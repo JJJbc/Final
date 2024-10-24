@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+.informationSearch{
+	margin-top: 150px;
+}
+
+.information .informationTable{
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.information .informationTable .tableBody .informationTitle{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.information .informationTable .tableBody .informationTitle .informationTitle_memberId{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.information .informationTable .tableBody .informationTitle .informationTitle_memberName{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.information .informationTable .tableBody .informationTitle .informationTitle_memberCredate{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.information .informationTable .tableBody .informationTitle .informationTitle_memberDelete{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+
+
+.information .informationTable .tableBody .firstInformation{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.information .informationTable .tableBody .firstInformation .information__name{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+ }
+
+
+.information .informationTable .tableBody .firstInformation .information__id{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.information .informationTable .tableBody .firstInformation .information__credate{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+.information .informationTable .tableBody .firstInformation .information__memberDelete{
+	border: 1px solid black;
+	border-collapse: collapse;
+	text-align: center;
+}
+

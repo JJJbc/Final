@@ -28,32 +28,48 @@
 	<!-- toast container -->
 
   <div id="main-container">
-		<div class="main_signIn">
-			<div class="main_signIn--title">							
+  
+ 		<div class="signInFlexBox">
+			<div class="signInImg">
+				<img class="signInImg__img" alt="." src="/img/common/singin&up.png">
+				<div class="signInImg__textContainer">
+					<div>
+						<span class="signInImg__firstText">위드조 문화센터에</span>
+					</div>
+					<div>
+						<span class="signInImg__secondText">처음 오셨나요?</span>
+					</div>
+					<div class="signUp_content--signupBtn">
+						<button type="button" class="signUp_btn" onclick="location.href='/member/add'">가입하러가기 -></button>
+					</div>
+				</div>
 			</div>
-			<div class="main_signIn_content_form">
-				<form id="loginForm" action="./login" method="post" class="main_signIn_content">
-					
-						<div class="signIn_content--memberId">
-							<label  for="memerId">아이디</label> 
-							<div class="signIn_content_element--textBox">
-								<input id="memberId" type="text" name="memberId" value="">
+	
+			<div class="main_signIn">
+				<div class="main_signIn--title">							
+				</div>
+				<div class="main_signIn_content_form">
+					<form id="loginForm" action="./login" method="post" class="main_signIn_content">
+						
+							<h1>로 그 인</h1>
+							<div class="signIn_content--memberId">								
+								<div class="signIn_content_element--textBox">
+									<input id="memberId" type="text" name="memberId" value="" placeholder="아이디를를 입력해주세요">
+								</div>
 							</div>
-						</div>
-						<div class="signIn_content--memberPw">
-							<label for="memberPw">비밀번호</label> 
-							<div class="signIn_content_element--textBox">
-								<input id="memberPw" type="password" name="memberPw" value="">
+							<div class="signIn_content--memberPw">
+								 
+								<div class="signIn_content_element--textBox">
+									<input id="memberPw" type="password" name="memberPw" value="" placeholder="비밀번호를 입력해주세요">
+								</div>
 							</div>
-						</div>
-						<div class="signIn_content--loginBtn">
-							<input type="submit" value="로그인" class="signin_btn"/>
-						</div>
-						<div class="signUp_content--signupBtn">
-							<button type="button" class="signUp_btn" onclick="location.href='/member/add'">가입하러가기 -></button>
-						</div>
-					
-				</form>
+							<div class="signIn_content--loginBtn">
+								<input type="submit" value="로그인" class="signin_btn"/>
+							</div>
+							
+						
+					</form>
+				</div>
 			</div>
 		</div>
 	</div> 

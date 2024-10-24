@@ -56,4 +56,12 @@ public class MemberServiceImpl implements MemberService{
 		return memberDao.countByMemberId(memberId) > 0;
 	}
 
+	@Override
+	public int memberDeleteOne(int memberNo) {
+		// TODO Auto-generated method stub
+		
+        return memberDao.memberDeleteOne(memberNo);
+    }
+	
+
 }

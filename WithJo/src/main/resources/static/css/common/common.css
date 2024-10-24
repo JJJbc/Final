@@ -160,6 +160,20 @@ body.scrollUp #header {
     transition-property: height, top;
     transition-duration: .4s, .3s;
 }
+.aboutPage{
+	height: 200px;
+	background-image: linear-gradient(to left, #7e8fbb, #e1e3ea);
+	text-align: right;
+	font-size: 40px;
+	font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+.pageTitle{
+	padding: 77px 30px;
+}
 
 /* footer */
 .footer{

@@ -72,6 +72,24 @@ public class MemberController {
 		return "member/MemberListView";					
 	}
 	
+	// (관리자) member 삭제
+	@PostMapping("/delete")
+	@ResponseBody
+	public String memberDelete(@RequestParam int memberNo, HttpSession session) {
+		MemberVo loggedInMember = (MemberVo) session.getAttribute("memberVo");
+		
+		if (loggedInMember == null || loggedInMember.getAuthority() != 1) {
+	        return "unauthorized";
+	    }
+	    
+	    try {
+	        memberService.memberDeleteOne(memberNo);
+	        return "success";
+	    } catch (Exception e) {
+	        return "fail";
+	    }
+	}
+	
 	// 로그인 화면
 	@GetMapping("/login")
 	public String login(HttpSession session, Model model) {
@@ -184,6 +202,8 @@ public class MemberController {
 	        return "redirect:/error";  // 또는 적절한 에러 페이지로 리다이렉트
 	    }
 	}
+	
+	
 	
 	
 	

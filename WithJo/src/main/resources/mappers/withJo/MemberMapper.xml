@@ -15,7 +15,7 @@
 		<result column="MEMBER_CREDATE" property="memberCredate"/>
 		<result column="MEMBER_UPDATE" property="memberUpdate"/>
 		<result column="MEMBER_E_MONEY" property="memberEMoney"/>
-		<result column="AUTHORTIY" property="authority"/>		
+		<result column="AUTHORITY" property="authority"/>		
 	</resultMap>
 	
 	<sql id="search">
@@ -95,6 +95,11 @@
 		FROM MEMBER
 		WHERE MEMBER_ID = #{memberId}
 	</select>
+	
+	<delete id="memberDeleteOne" parameterType="int">
+		DELETE FROM MEMBER
+		WHERE MEMBER_NO = #{memberNo}
+	</delete>
 	
 	
 	

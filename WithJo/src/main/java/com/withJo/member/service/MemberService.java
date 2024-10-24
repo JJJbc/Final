@@ -13,5 +13,6 @@ public interface MemberService {
 	public MemberVo memberSelectOne(int no);
 	public int memberUpdateOne(MemberVo memberVo);
 	public boolean isDuplicateId(String memberId);
+	public int memberDeleteOne(int memberNo);
 
 }

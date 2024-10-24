@@ -19,115 +19,10 @@
 <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css" rel="stylesheet">
 <!-- 페이지 css -->
 <link rel="stylesheet" href="/css/common/common.css">
+<link rel="stylesheet" href="/css/member/memberList.css">
 <script defer src="/js/common/common.js"></script>
-  
-<style type="text/css">
-
-.informationSearch{
-	margin-top: 150px;
-}
-
-.information .informationTable{
-	border: 1px solid black;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-.information .informationTable .tableBody .firstInformation{
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-.information .informationTable .tableBody .firstInformation .information__name{
-	font-weight: bold;
-	font-size: 18px;
-	text-align: center;
- }
-
-.information .informationTable .tableBody .firstInformation .information__no{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .firstInformation .information__id{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .firstInformation .information__birthdate{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation{
-	border: 1px solid black;
-	border-collapse: collapse;
-}
-
-.information .informationTable .tableBody .secondInformation .information__zipcode{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation .information__address{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation .information__addressInfo{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation .information__gender{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation .information__eMoney{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation .information__credate{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-.information .informationTable .tableBody .secondInformation .information__update{
-	border: 1px solid black;
-	border-collapse: collapse;
-	text-align: center;
-}
-
-
-
-
-</style>
-
-<script type="text/javascript">
-	function membersearch() {
-		var searchNField = $("#searchNField").val();
-		var searchNKeyword = $("#searchNKeyword").val();
-		
-		$("#searchField").val(searchNField);
-		$("#searchKeyword").val(searchNKeyword);
-		$("#curPage").val(1);
-		
-	/* 	alert(searchNKeyword); */
-		
-		$("#pagingForm").submit();			
-	}
-</script>
+<script>var userAuthority = ${sessionScope.memberVo.authority};</script>
+<script defer src="/js/member/memberList.js"></script>
 
 </head>
 
@@ -152,22 +47,23 @@
 	<div class="information">
 		<table class="informationTable">
 			<tbody class="tableBody">
+				<tr class="informationTitle">
+					<td class="informationTitle_memberId">회원 ID</td>
+					<td class="informationTitle_memberName">회원명</td>
+					<td class="informationTitle_memberCredate">가입날짜</td>
+					<td class="informationTitle_memberDelete">비고</td>
+				</tr>	
 				<c:forEach var="memberVo" items="${memberList}">					
-					<tr class="firstInformation">
-						<td class="information__no">${memberVo.memberNo}</td>
-						<td class="information__name">${memberVo.memberName}</td>						
-						<td class="information__id">${memberVo.memberId}</td>
-						<td class="information__birthdate">${memberVo.memberBirthDate}</td>
-					</tr>
-					<tr class="secondInformation">
-						<td class="information__zipcode">${memberVo.memberZipCode}</td>
-						<td class="information__address">${memberVo.memberAddress}</td>
-						<td class="information__addressInfo">${memberVo.memberAddressInfo}</td>
-						<td class="information__gender">${memberVo.memberGender}</td>						
-						<td class="information__eMoney">${memberVo.memberEMoney}</td>
+					<tr class="firstInformation">	
+						<td class="information__id">${memberVo.memberId}</td>					
+						<td class="information__name">${memberVo.memberName}</td>
 						<td class="information__credate"><fmt:formatDate value="${memberVo.memberCredate}" pattern="yyyy-MM-dd" /></td>
-						<td class="information__update"><fmt:formatDate value="${memberVo.memberUpdate}" pattern="yyyy-MM-dd" /></td>
-					</tr>	
+						<td class="information__memberDelete">
+							<c:if test="${sessionScope.memberVo.authority eq 1}">
+								<input type="button" value="삭제하기" onclick='memberDeleteFnc(${memberVo.memberNo})'>
+							</c:if>
+						</td>
+					</tr>					
 				</c:forEach>
 			</tbody>
 		</table>

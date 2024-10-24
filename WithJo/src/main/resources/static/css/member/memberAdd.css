@@ -1,18 +1,15 @@
 @charset "UTF-8";
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+
+#main-container {    
+    margin: 100px;   
 }
 
-.main-container {
-    max-width: 600px;
-    margin: 150px auto 50px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+.signUpFlexBox{
+	display: flex;
+}
+.signUpImg{
+	width: 50%;
 }
 
 .main-container_signUp_content_form > div {

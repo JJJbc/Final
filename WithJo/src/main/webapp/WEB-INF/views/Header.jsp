@@ -73,7 +73,14 @@
 		</c:if> 
 		<c:if test="${sessionScope.memberVo.authority eq 0 || sessionScope.memberVo.authority eq 1}">
 			<a href="<%=request.getContextPath()%>/member/logout"><img class="logoutImg" alt="." src="/img/common/logout.png"></a>
-			<a href="/member/update?memberNo=${memberVo.memberNo}"><img class="mypageImg" alt="." src="/img/common/mypage.png"></a>
+			<c:choose>
+				<c:when test="${sessionScope.memberVo.authority eq 0}">
+					<a href="/member/update?memberNo=${memberVo.memberNo}"><img class="mypageImg" alt="." src="/img/common/mypage.png"></a>
+				</c:when>
+				<c:when test="${sessionScope.memberVo.authority eq 1}">
+					<a href="/member/list"><img class="mypageImg" alt="." src="/img/common/mypage.png"></a>
+				</c:when>
+			</c:choose>
 		</c:if>
 	</div>
 	

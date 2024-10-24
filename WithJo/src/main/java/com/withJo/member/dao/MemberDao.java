@@ -14,4 +14,5 @@ public interface MemberDao {
 	public int memberUpdateOne(MemberVo memberVo);
 	
 	public int countByMemberId(String memberId);
+	public int memberDeleteOne(int memberNo);
 }

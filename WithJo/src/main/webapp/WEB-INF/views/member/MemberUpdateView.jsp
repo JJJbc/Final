@@ -82,33 +82,35 @@
 
 	<div class="main-container">
 
-    <div class="main_signUp">      
-      <div class="main_signUp_content_form">
-        <!-- signup form -->
-        <form class="mainSignupForm" action="./update" method="post" class="main_signUp_content" name="frm">
+    <div class="main_update">      
+      <div class="main_update_content_form">
+        <!-- update form -->
+        <form class="mainUpdateForm" action="./update" method="post" class="main_update_content" name="frm">
         	<input type="hidden" name="memberNo" value="${memberVo.memberNo}">
     		<input type="hidden" name="memberId" value="${memberVo.memberId}">
    			<input type="hidden" name="memberName" value="${memberVo.memberName}">		
 			
 
-          <div class="main_signUp_content__item">
+          <div class="main_update_content__item">
           	<!-- 아이디 -->
-            <div class="main_signUp_content_element">
-              <label for="memberId">아이디</label>
-              <div class="signUp_content_element--textBox">
+            <div class="main_update_content_memberId">
+              <label for="memberId">회원 ID</label>
+              <div class="update_content_memberId--textBox">
                 <a class="memberId">${memberVo.memberId}</a>             
               </div>
-            </div>         
+            </div>
+            
+                     
                     
             <!-- 이름 -->
-            <div class="main_signUp_content_element">
+            <div class="main_update_content_memberName">
               <label for="memberName">이름</label>
-              <div class="signUp_content_element--textBox">
+              <div class="update_content_memberName--textBox">
                 <a class="memberId">${memberVo.memberName}</a>
               </div>
             </div> 
                                
-            <div>
+            <div class="main">
             	<label for="memberAddress">주소</label>
             	<div>            	
          	  		<input type="text" id="memberZipCode" name="memberZipCode" placeholder="우편번호" readonly value="${memberVo.memberZipCode}">
@@ -122,22 +124,22 @@
 			
             
 
-            <div class="signUp_content_element--signUpBtn">
+            <div class="update_content_element--updateBtn">
               <input type="submit" value="수정하기"/>
             </div> 
           </div>
-          <!-- main_signUp_content__item -->
+          <!-- main_update_content__item -->
 
         </form>
-        <!-- signup form -->
+        <!-- update form -->
 
       </div>
-      <!-- main_signUp_content_form -->
+      <!-- main_update_content_form -->
      
 
     
     </div>
-    <!-- main_signUp -->
+    <!-- main_update -->
 
   </div>
   <!-- main-container -->
