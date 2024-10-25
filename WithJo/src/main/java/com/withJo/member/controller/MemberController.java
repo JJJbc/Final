@@ -2,6 +2,9 @@ package com.withJo.member.controller;
 
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,10 +12,12 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -144,13 +149,40 @@ public class MemberController {
 	
 	// 회원가입 DB 연동
 	@PostMapping("/add")
-	public String memberAdd(MemberVo memberVo, Model model) {
-		log.info(logTitleMsg);
-		log.info("@PostMapping memberAdd: {}", memberVo);
-		
-		memberService.memberInsertOne(memberVo);
-		
-		return "/member/MemberLoginView";
+	@ResponseBody
+	public ResponseEntity<?> memberAdd(@RequestBody MemberVo memberVo) {
+	    log.info(logTitleMsg);
+	    log.info("@PostMapping memberAdd: {}", memberVo);
+
+	    String birthDateStr = memberVo.getMemberBirthDate();
+	    
+	    // 성별 유효성 검사
+	    if (memberVo.getMemberGender() != 1 && memberVo.getMemberGender() != 2) {
+	        return ResponseEntity.badRequest().body("{\"error\": \"올바른 성별을 선택해주세요.\"}");
+	    }
+
+	    if (birthDateStr != null && birthDateStr.length() == 8) {
+	        try {
+	            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+	            dateFormat.setLenient(false);
+	            dateFormat.parse(birthDateStr);
+	        } catch (ParseException e) {
+	            log.error("Error parsing birth date", e);
+	            return ResponseEntity.badRequest().body("{\"error\": \"생년월일 형식이 올바르지 않습니다.\"}");
+	        }
+	    } else if (birthDateStr != null) {
+	        return ResponseEntity.badRequest().body("{\"error\": \"생년월일 형식이 올바르지 않습니다.\"}");
+	    }
+	    
+	    
+
+	    try {
+	        memberService.memberInsertOne(memberVo);
+	        return ResponseEntity.ok().body("{\"message\": \"회원가입이 완료되었습니다.\"}");
+	    } catch (Exception e) {
+	        log.error("Error during member registration", e);
+	        return ResponseEntity.badRequest().body("{\"error\": \"회원가입 중 오류가 발생했습니다.\"}");
+	    }
 	}
 	
 	// ID 중복검사

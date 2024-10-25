@@ -88,6 +88,14 @@ public class MemberVo {
 	public void setMemberBirthDate(String memberBirthDate) {
 		this.memberBirthDate = memberBirthDate;
 	}
+	
+	public int getMemberGender() {
+		return memberGender;
+	}
+
+	public void setMemberGender(int memberGender) {
+		this.memberGender = memberGender;
+	}
 
 	public String getmemberZipCode() {
 		return memberZipCode;
@@ -111,15 +119,7 @@ public class MemberVo {
 
 	public void setMemberAddressInfo(String memberAddressInfo) {
 		this.memberAddressInfo = memberAddressInfo;
-	}
-
-	public int getMemberGender() {
-		return memberGender;
-	}
-
-	public void setMemberGender(int memberGender) {
-		this.memberGender = memberGender;
-	}
+	}	
 
 	public Date getMemberCredate() {
 		return memberCredate;

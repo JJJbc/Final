@@ -1,138 +1,86 @@
 @charset "UTF-8";
-/* #main-container {
-    margin-top: 100px;
-    
-}
-.signInFlexBox{
-	display: flex;
-	justify-content: space-between; 요소들을 양 끝으로 정렬
-    align-items: center; 세로 중앙 정렬
-    width: 100%;
-    max-width: 1200px; 전체 너비 제한 (필요에 따라 조정)
-    margin: 0 auto; 중앙 정렬
-    padding: 0 20px; 좌우 여백
-}
-
-.signInImg{
-	width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; 오른쪽 정렬
-    padding-right: 20px; 오른쪽 여백	
-    position: relative; 텍스트 컨테이너 위치 조정을 위해 상대 위치 사용
-}
-
-.signInImg__textContainer {
-    position: absolute;
-    left: 0; 이미지의 왼쪽 끝에 붙임
-    top: 50%; 이미지의 세로 중앙에 위치
-    transform: translateY(-50%); 수직 중앙 정렬
-    text-align: left; 텍스트 왼쪽 정렬
-}
-
-.signInImg__img{
-	width: 300px;
-	height: 400px;
-	object-fit: cover; 이미지 비율 유지
-}
-
-.signInImg__firstText{	
-	font-size: 20px;	
-}
-
-.signInImg__secondText{	
-	font-size: 20px;	
-}
-
-
-.main_signIn_content_form {
-    width: 100%;
-    max-width: 400px; 로그인 폼의 최대 너비
-}
-
-.signIn_content--memberId,
-.signIn_content--memberPw {
-    margin-bottom: 20px;
-}
-
-.signIn_content_element--textBox input {
-    width: 94%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.signIn_content--signupBtn input[type="submit"],
-.signUp_content--signupBtn button {
-    width: 150px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.signUp_content--signupBtn button {
-    background-color: #f4f4f4;
-    color: #333;
-    border: 1px solid #ddd;
-    margin-top: 10px;
-}
-
-.signUp_content--signupBtn button:hover {
-    background-color: #e7e7e7;
-}
-
-.signIn_content--loginBtn input[type="submit"],
-.signIn_content--loginBtn button {
-    width: 150px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.signIn_content--loginBtn input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.signIn_content--loginBtn input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-.main_signIn--title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.main_signIn {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 왼쪽 정렬
-    padding-left: 20px; 왼쪽 여백
-} */
 #main-container{
 	margin-top: 120px;
 }
 .signInFlexBox{
 	display: flex;
+	height: 700px;
 }
-.signInImg__img{
+.signInImg{
 	position: relative;
 }
-.signInImg__firstText, .signInImg__secondText{
+
+.signInImg, .main_signIn{
+	width: 50%;
+}
+
+.signInImg__textContainer{
 	position: absolute;
-	top: 120px;
+	top: 100px;
+	text-align: center;
+	width: 100%;
+}
+.signUp_btn:hover{
+	font-size: 22px;
 }
 .signInImg__secondText{
-	margin-top: 40px;
+	margin-top: 16px;
+}
+.signInImg__img{
+	height: 700px;
+	object-fit:cover;
+}
+.signInImg__textContainer p{
+	color: white;
+	font-size: 50px;
+	font-weight: bold;
+	text-shadow: 4px 4px 2px #0000007a;
+}
+.main_signIn{
+	background-color: #c4d0e3;
+}
+.signUp_content--signupBtn{
+	margin-top: 30px;
+}
+.signUp_btn{
+	border: none;
+	background-color: transparent;
+	font-size: 20px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 3px 2px 2px #0000007a;
+}
+.main_signIn{
+	text-align: center;
+}
+.main_signIn--title p{
+	font-size: 50px;
+	color: white;
+	font-weight: bold;
+	text-shadow: 3px 3px 3px #0000004a;
+}
+.main_signIn--inner{
+	padding-top: 150px;
+}
+
+.main_signIn_content_form{
+	margin-top: 90px;
+}
+.signIn_content_element--textBox input{
+	width: 430px;
+	height: 43px;
+	border-radius: 38px;
+	border: none;
+	padding: 5px 20px;
+	margin-bottom: 30px;
+	box-shadow: 3px 3px 3px #0000004a;
+}
+.signIn_content--loginBtn.signin_btn input{
+	height: 55px;
+	width: 470px;
+	font-size: 25px;
+	text-align: center;
+	background-color: #AD8080;
+	color: white;
+	font-weight: bold;
 }

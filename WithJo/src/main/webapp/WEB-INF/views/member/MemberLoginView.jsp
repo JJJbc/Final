@@ -33,11 +33,11 @@
 			<div class="signInImg">
 				<img class="signInImg__img" alt="." src="/img/common/singin&up.png">
 				<div class="signInImg__textContainer">
-					<div>
-						<span class="signInImg__firstText">위드조 문화센터에</span>
+					<div class="signInImg__firstText">
+						<p><span>위드조 문화센터에</span></p>
 					</div>
-					<div>
-						<span class="signInImg__secondText">처음 오셨나요?</span>
+					<div class="signInImg__secondText">
+						<p><span>처음 오셨나요?</span></p>
 					</div>
 					<div class="signUp_content--signupBtn">
 						<button type="button" class="signUp_btn" onclick="location.href='/member/add'">가입하러가기 -></button>
@@ -46,31 +46,31 @@
 			</div>
 	
 			<div class="main_signIn">
-				<div class="main_signIn--title">							
-				</div>
-				<div class="main_signIn_content_form">
-					<form id="loginForm" action="./login" method="post" class="main_signIn_content">
-						
-							<h1>로 그 인</h1>
+				<div class="main_signIn--inner">
+					<div class="main_signIn--title">
+						<p>로그인</p>							
+					</div>
+					<div class="main_signIn_content_form">
+						<form id="loginForm" action="./login" method="post" class="main_signIn_content">
 							<div class="signIn_content--memberId">								
-								<div class="signIn_content_element--textBox">
+								<div class="signIn_content_element--textBox memberId">
 									<input id="memberId" type="text" name="memberId" value="" placeholder="아이디를를 입력해주세요">
 								</div>
 							</div>
 							<div class="signIn_content--memberPw">
-								 
-								<div class="signIn_content_element--textBox">
+								<div class="signIn_content_element--textBox memberPw">
 									<input id="memberPw" type="password" name="memberPw" value="" placeholder="비밀번호를 입력해주세요">
 								</div>
 							</div>
-							<div class="signIn_content--loginBtn">
-								<input type="submit" value="로그인" class="signin_btn"/>
+							<div class="signIn_content--loginBtn signin_btn">
+								<div class="signIn_content_element--textBox signin_btn">
+									<input type="submit" value="로그인" class="signin_btn"/>
+								</div>
 							</div>
-							
-						
-					</form>
+						</form>
+					</div>
 				</div>
-			</div>
+			</div><!-- main_signIn -->
 		</div>
 	</div> 
 	
